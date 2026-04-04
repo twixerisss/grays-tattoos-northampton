@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gray's Tattoos | Northampton Tattoo Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#F5F3EF;--pencil:#4A4A4A;--charcoal:#2C2C2C;--red:#D94F4F;--paper:#FFFDF7}
+body{font-family:'Source Sans Pro',sans-serif;background:var(--bg);color:var(--pencil);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Architects Daughter',cursive;color:var(--charcoal)}
+.hand-underline{position:relative;display:inline-block}
+.hand-underline::after{content:'';position:absolute;bottom:-6px;left:-5%;width:110%;height:12px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'%3E%3Cpath d='M2 8 Q50 2 100 7 Q150 12 198 4' stroke='%23D94F4F' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center;background-size:contain}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;background:var(--paper);background-image:repeating-linear-gradient(transparent,transparent 31px,#C8D1DC 31px,#C8D1DC 32px),linear-gradient(90deg,transparent 59px,#E8C5C5 59px,#E8C5C5 60px,transparent 60px);padding:2rem}
+.hero-content{max-width:700px;text-align:center;padding:3rem 2rem}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.2;margin-bottom:1rem}
+.hero h1 span{color:var(--red)}
+.hero p{font-size:1.2rem;margin-bottom:2rem;line-height:1.8}
+.btn{display:inline-block;padding:14px 36px;font-family:'Architects Daughter',cursive;font-size:1.1rem;border:2.5px solid var(--charcoal);color:var(--charcoal);text-decoration:none;border-radius:4px;transition:.3s;position:relative}
+.btn:hover{background:var(--charcoal);color:var(--paper)}
+.btn-red{border-color:var(--red);color:var(--red)}
+.btn-red:hover{background:var(--red);color:#fff}
+
+/* Pencil doodles */
+.doodle-star{position:absolute;width:30px;height:30px}
+.doodle-star svg{width:100%;height:100%}
+.hero .doodle-star:nth-child(1){top:15%;left:10%}
+.hero .doodle-star:nth-child(2){top:25%;right:8%}
+.hero .doodle-star:nth-child(3){bottom:20%;left:15%}
+.hero .doodle-star:nth-child(4){bottom:30%;right:12%}
+
+/* Section */
+section{padding:5rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;font-size:clamp(2rem,4vw,3rem);margin-bottom:3rem}
+
+/* Services - paper cards */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.service-card{background:var(--paper);border:1px solid #ddd;border-radius:2px;padding:2rem;position:relative;box-shadow:2px 3px 8px rgba(0,0,0,.08);transform:rotate(-0.5deg);transition:.3s}
+.service-card:nth-child(even){transform:rotate(0.5deg)}
+.service-card:hover{transform:rotate(0deg) translateY(-4px);box-shadow:2px 5px 15px rgba(0,0,0,.12)}
+.service-card h3{font-size:1.3rem;margin-bottom:.5rem}
+.service-card .price{font-family:'Architects Daughter',cursive;color:var(--red);font-size:1.4rem;font-weight:700}
+.service-card p{margin-top:.5rem;font-size:.95rem;color:#666}
+.service-card::before{content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:60px;height:16px;background:#D4AF37;border-radius:2px;opacity:.5}
+
+/* Stats */
+.stats{background:var(--charcoal);color:var(--paper);padding:4rem 2rem;text-align:center}
+.stats-grid{display:flex;justify-content:center;gap:4rem;flex-wrap:wrap}
+.stat{text-align:center}
+.stat .num{font-family:'Architects Daughter',cursive;font-size:2.5rem;color:var(--red)}
+.stat .label{font-size:1rem;margin-top:.25rem;opacity:.8}
+
+/* Gallery - corkboard */
+.gallery{background:#B8885C;padding:5rem 2rem}
+.gallery .section-title{color:var(--paper)}
+.corkboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem;max-width:1100px;margin:0 auto}
+.pinned{background:#fff;padding:10px;box-shadow:3px 4px 12px rgba(0,0,0,.3);transform:rotate(-2deg);transition:.3s}
+.pinned:nth-child(2){transform:rotate(1.5deg)}
+.pinned:nth-child(3){transform:rotate(-1deg)}
+.pinned:nth-child(4){transform:rotate(2deg)}
+.pinned:hover{transform:rotate(0deg) scale(1.03)}
+.pinned img{width:100%;height:220px;object-fit:cover;display:block}
+.pin{width:20px;height:20px;background:var(--red);border-radius:50%;position:absolute;top:-10px;left:50%;transform:translateX(-50%);box-shadow:1px 2px 4px rgba(0,0,0,.3)}
+.pinned{position:relative}
+
+/* Reviews - torn paper */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;max-width:1100px;margin:0 auto}
+.review-card{background:var(--paper);padding:2rem 2rem 2.5rem;position:relative;clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),92% 100%,84% calc(100% - 10px),76% calc(100% - 2px),68% calc(100% - 14px),60% calc(100% - 6px),50% calc(100% - 16px),42% calc(100% - 4px),34% calc(100% - 12px),26% 100%,18% calc(100% - 8px),10% calc(100% - 15px),0 calc(100% - 5px))}
+.review-card .stars{color:var(--red);font-size:1.3rem;margin-bottom:.75rem}
+.review-card p{font-style:italic;line-height:1.7;font-size:1.05rem}
+.review-card .author{font-family:'Architects Daughter',cursive;margin-top:1rem;color:var(--charcoal);font-size:1.1rem}
+
+/* Contact */
+.contact{background:var(--paper);background-image:repeating-linear-gradient(transparent,transparent 31px,#C8D1DC 31px,#C8D1DC 32px)}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;max-width:1100px;margin:0 auto}
+.contact-info h3{font-size:1.4rem;margin-bottom:1rem}
+.contact-info p{margin-bottom:.75rem;line-height:1.7}
+.contact-info a{color:var(--red);text-decoration:none}
+.contact-info a:hover{text-decoration:underline}
+.map-wrap{border-radius:4px;overflow:hidden;box-shadow:3px 4px 12px rgba(0,0,0,.15)}
+.map-wrap iframe{width:100%;height:350px;border:0}
+
+/* Footer */
+footer{background:var(--charcoal);color:var(--paper);text-align:center;padding:2rem}
+footer a{color:var(--red);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* Arrow doodle SVG */
+.arrow-doodle{text-align:center;margin:2rem 0}
+
+@media(max-width:768px){
+  .contact-inner{grid-template-columns:1fr}
+  .stats-grid{gap:2rem}
+  .hero{background-image:repeating-linear-gradient(transparent,transparent 31px,#C8D1DC 31px,#C8D1DC 32px)}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <span class="doodle-star"><svg viewBox="0 0 30 30"><path d="M15 2 L17 11 L26 11 L19 17 L22 26 L15 20 L8 26 L11 17 L4 11 L13 11 Z" fill="none" stroke="#D94F4F" stroke-width="1.5"/></svg></span>
+  <span class="doodle-star"><svg viewBox="0 0 30 30"><path d="M15 2 L17 11 L26 11 L19 17 L22 26 L15 20 L8 26 L11 17 L4 11 L13 11 Z" fill="none" stroke="#4A4A4A" stroke-width="1.5"/></svg></span>
+  <span class="doodle-star"><svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="10" fill="none" stroke="#4A4A4A" stroke-width="1.5" stroke-dasharray="4 3"/></svg></span>
+  <span class="doodle-star"><svg viewBox="0 0 30 30"><path d="M5 25 Q15 5 25 25" fill="none" stroke="#D94F4F" stroke-width="1.5"/></svg></span>
+  <div class="hero-content">
+    <h1><span>Gray's</span> Tattoos</h1>
+    <p>Owner-operated tattoo studio on St James' Road, Northampton. Personal service, custom artwork, one client at a time.</p>
+    <a href="#services" class="btn">View Services</a>&nbsp;&nbsp;
+    <a href="#contact" class="btn btn-red">Book a Consultation</a>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <h2 class="section-title"><span class="hand-underline">Services & Pricing</span></h2>
+    <div class="arrow-doodle"><svg width="60" height="40" viewBox="0 0 60 40"><path d="M5 35 Q30 0 55 20" fill="none" stroke="#4A4A4A" stroke-width="1.5" stroke-linecap="round"/><path d="M48 14 L55 20 L46 22" fill="none" stroke="#4A4A4A" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Custom Tattoo</h3>
+        <div class="price">from &pound;60/hr</div>
+        <p>Bespoke designs created just for you, drawn to your vision.</p>
+      </div>
+      <div class="service-card">
+        <h3>Small Tattoo</h3>
+        <div class="price">from &pound;40</div>
+        <p>Quick pieces, flash-sized work, and minimal designs.</p>
+      </div>
+      <div class="service-card">
+        <h3>Cover Up</h3>
+        <div class="price">Consultation</div>
+        <p>Transform old ink into something you love. Free consultation first.</p>
+      </div>
+      <div class="service-card">
+        <h3>Flash Design</h3>
+        <div class="price">from &pound;50</div>
+        <p>Choose from ready-made designs in the studio flash book.</p>
+      </div>
+      <div class="service-card">
+        <h3>Touch Up</h3>
+        <div class="price">from &pound;30</div>
+        <p>Refresh and revive existing tattoos that need a little love.</p>
+      </div>
+      <div class="service-card">
+        <h3>Consultation</h3>
+        <div class="price">Free</div>
+        <p>Come in for a chat about your idea. No pressure, no obligation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat">
+      <div class="num">Owner</div>
+      <div class="label">Operated</div>
+    </div>
+    <div class="stat">
+      <div class="num">Tue - Sat</div>
+      <div class="label">Open Days</div>
+    </div>
+    <div class="stat">
+      <div class="num">1-to-1</div>
+      <div class="label">Personal Service</div>
+    </div>
+  </div>
+</div>
+
+<section class="gallery" id="gallery">
+  <h2 class="section-title"><span class="hand-underline">Gallery</span></h2>
+  <div class="corkboard">
+    <div class="pinned"><div class="pin"></div><img src="https://images.unsplash.com/photo-1598371839696-5c5bb1c12e38?w=800" alt="Tattoo work" loading="lazy"></div>
+    <div class="pinned"><div class="pin"></div><img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=800" alt="Tattoo art" loading="lazy"></div>
+    <div class="pinned"><div class="pin"></div><img src="https://images.unsplash.com/photo-1590246814883-57764a8db0d6?w=800" alt="Tattoo studio" loading="lazy"></div>
+    <div class="pinned"><div class="pin"></div><img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?w=800" alt="Custom tattoo" loading="lazy"></div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <h2 class="section-title"><span class="hand-underline">What Clients Say</span></h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Graham is a true artist. The detail in my piece is incredible &mdash; exactly what I wanted and more."</p>
+        <div class="author">&mdash; Jamie R.</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"So much attention to detail. He took the time to get the design perfect before starting. Couldn't be happier."</p>
+        <div class="author">&mdash; Sarah T.</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Made me feel so comfortable for my first tattoo. Talked me through everything and the result is stunning."</p>
+        <div class="author">&mdash; Chris M.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <h2 class="section-title"><span class="hand-underline">Get In Touch</span></h2>
+    <div class="contact-inner">
+      <div class="contact-info">
+        <h3>Studio Details</h3>
+        <p><strong>Address:</strong> 108 St James' Road, Northampton NN5 5LF</p>
+        <p><strong>Phone:</strong> <a href="tel:01604949958">01604 949958</a></p>
+        <p><strong>Email:</strong> <a href="mailto:crosslandgraham@gmail.com">crosslandgraham@gmail.com</a></p>
+        <p><strong>Hours:</strong> Tuesday &ndash; Saturday, 10am &ndash; 5pm<br>Closed Monday &amp; Sunday</p>
+      </div>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps?q=Grays+Tattoos+108+St+James+Road+Northampton&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Gray's Tattoos, Northampton. All rights reserved.</p>
+  <p>Built by <a href="https://twix.tf">Harry</a></p>
+</footer>
+
+</body>
+</html>
