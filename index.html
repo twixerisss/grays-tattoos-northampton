@@ -3,301 +3,1127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gray's Tattoos — Tattoo Studio in Northampton</title>
-    <meta name="description" content="Gray's Tattoos — Owner-operated tattoo studio on St James' Road, Northampton. Custom tattoos, cover ups, and flash designs. Personal 1-to-1 service.">
+    <title>Gray's Tattoos &mdash; Northampton &middot; St James' Road</title>
+    <meta name="description" content="Gray's Tattoos &mdash; owner-operated tattoo studio on St James' Road, Northampton. Custom tattoos, cover-ups, flash designs, touch-ups. Personal 1-to-1 service.">
+    <meta name="theme-color" content="#0a0a0a">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Antonio:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Crimson+Pro:ital,wght@1,400;1,500;1,600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
-        :root {
-            --primary: #D94F4F;
-            --primary-light: #e87070;
-            --primary-rgb: 217,79,79;
-            --bg: #000000;
-            --bg-raised: #0a0a0a;
-            --text: #ffffff;
-            --text-secondary: #999999;
-            --text-muted: #666666;
-            --border: rgba(255,255,255,0.08);
-            --border-strong: rgba(255,255,255,0.15);
+        :root{
+            --ink:#0a0a0a;
+            --ink-2:#131211;
+            --ink-3:#1c1a17;
+            --bone:#ece5d4;
+            --bone-2:#d6cdb6;
+            --bone-mute:#8a8270;
+            --lead:#3b3b3b;
+            --lead-2:#535353;
+            --red:#e63946;
+            --red-deep:#a8202b;
+            --red-glow:rgba(230,57,70,0.35);
+            --line:rgba(236,229,212,0.12);
+            --line-strong:rgba(236,229,212,0.28);
+            --tape:rgba(236,229,212,0.22);
         }
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+        ::selection{background:var(--red);color:var(--bone);}
         html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
-        body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
+        body{
+            font-family:'Antonio',Impact,sans-serif;
+            background:var(--ink);
+            color:var(--bone);
+            line-height:1.55;
+            overflow-x:hidden;
+            font-weight:400;
+        }
 
-        nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 2rem;height:70px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s;}
-        nav.scrolled{background:rgba(0,0,0,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
-        .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--text);text-decoration:none;letter-spacing:0.05em;}
-        .nav-logo span{color:var(--primary);}
-        .nav-links{display:flex;gap:2rem;list-style:none;}
-        .nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;transition:color 0.3s;}
-        .nav-links a:hover{color:var(--primary);}
-        .nav-cta{background:var(--primary);color:#000;padding:0.55rem 1.5rem;text-decoration:none;font-weight:700;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;transition:all 0.3s;}
-        .nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 25px rgba(var(--primary-rgb),0.4);}
-        .menu-toggle{display:none;background:none;border:1px solid var(--border);color:var(--text);font-size:1.1rem;cursor:pointer;width:44px;height:44px;align-items:center;justify-content:center;}
+        /* xerox/risograph noise overlay */
+        body::before{
+            content:'';position:fixed;inset:0;pointer-events:none;z-index:1;mix-blend-mode:overlay;opacity:0.28;
+            background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.92  0 0 0 0 0.89  0 0 0 0 0.83  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+        }
+        /* halftone dots */
+        body::after{
+            content:'';position:fixed;inset:0;pointer-events:none;z-index:2;opacity:0.06;
+            background-image:radial-gradient(circle,var(--bone) 1px,transparent 1.4px);
+            background-size:6px 6px;
+        }
 
-        .hero{min-height:100vh;display:flex;align-items:flex-end;position:relative;padding:0 3rem 5rem;overflow:hidden;}
-        .hero-bg{position:absolute;inset:0;background:var(--bg-raised);}
-        .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.35;}
-        .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,var(--bg) 0%,transparent 50%,rgba(0,0,0,0.3) 100%);}
-        .hero-content{position:relative;z-index:2;max-width:900px;}
-        .hero-tag{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--primary);font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem;}
-        .hero-tag::before{content:'';width:40px;height:2px;background:var(--primary);}
-        .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,10vw,8rem);line-height:0.9;letter-spacing:0.02em;margin-bottom:1.5rem;}
-        .hero h1 span{color:var(--primary);}
-        .hero p{font-size:1rem;color:var(--text-secondary);max-width:480px;line-height:1.7;margin-bottom:2.5rem;}
-        .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
-        .btn-solid{background:var(--primary);color:#000;padding:0.85rem 2.5rem;text-decoration:none;font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.1em;transition:all 0.3s;border:none;cursor:pointer;}
-        .btn-solid:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(var(--primary-rgb),0.35);}
-        .btn-outline{background:transparent;color:var(--text);padding:0.85rem 2.5rem;text-decoration:none;font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.1em;border:1px solid var(--border-strong);transition:all 0.3s;}
-        .btn-outline:hover{border-color:var(--primary);color:var(--primary);}
+        .display{font-family:'Anton',Impact,sans-serif;font-weight:400;letter-spacing:0.005em;text-transform:uppercase;}
+        .heavy{font-family:'Antonio',sans-serif;font-weight:700;text-transform:uppercase;}
+        .mono{font-family:'IBM Plex Mono',monospace;}
+        .serif-i{font-family:'Crimson Pro',Georgia,serif;font-style:italic;}
+        .hand{font-family:'Caveat',cursive;font-weight:700;}
+        .red{color:var(--red);}
 
-        .stats-row{display:flex;justify-content:flex-start;gap:3rem;padding:3rem;border-bottom:1px solid var(--border);}
-        .stat-unit{display:flex;align-items:baseline;gap:0.5rem;}
-        .stat-big{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--primary);}
-        .stat-txt{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);font-weight:600;}
+        /* ========= NAV ========= */
+        nav{
+            position:fixed;top:0;left:0;right:0;z-index:50;
+            padding:0.95rem 1.6rem;display:flex;align-items:center;justify-content:space-between;
+            transition:background 0.35s,padding 0.35s,border 0.35s;
+            border-bottom:1px solid transparent;
+        }
+        nav.scrolled{background:rgba(10,10,10,0.92);backdrop-filter:blur(14px) saturate(140%);border-bottom-color:var(--line);padding:0.6rem 1.6rem;}
+        .nav-logo{display:flex;align-items:center;gap:0.65rem;text-decoration:none;color:var(--bone);}
+        .nav-logo .badge{
+            width:34px;height:34px;border:1.5px solid var(--bone);background:var(--red);
+            display:flex;align-items:center;justify-content:center;
+            transform:rotate(-4deg);position:relative;
+        }
+        .nav-logo .badge svg{width:18px;height:18px;color:var(--bone);}
+        .nav-logo .word{font-family:'Anton',sans-serif;font-size:1.25rem;letter-spacing:0.04em;text-transform:uppercase;line-height:1;}
+        .nav-logo .word .apos{font-family:'Crimson Pro',serif;font-style:italic;color:var(--red);font-weight:600;font-size:0.9em;padding:0 0.05em;}
+        .nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center;}
+        .nav-links a{
+            color:var(--bone-2);text-decoration:none;font-family:'IBM Plex Mono',monospace;
+            font-size:0.7rem;text-transform:uppercase;letter-spacing:0.18em;font-weight:500;
+            transition:color 0.25s;position:relative;padding:0.2rem 0;
+        }
+        .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--red);transition:width 0.35s cubic-bezier(0.7,0,0.3,1);}
+        .nav-links a:hover{color:var(--bone);}
+        .nav-links a:hover::after{width:100%;}
+        .nav-cta{
+            background:var(--red);color:var(--bone);text-decoration:none;
+            font-family:'Anton',sans-serif;font-size:0.85rem;
+            text-transform:uppercase;letter-spacing:0.1em;padding:0.55rem 1.1rem;
+            border:1.5px solid var(--red);transition:all 0.25s;display:inline-flex;align-items:center;gap:0.45rem;
+            position:relative;
+        }
+        .nav-cta::before{
+            content:'';position:absolute;inset:-4px;border:1px dashed var(--red);opacity:0;transition:opacity 0.3s;
+        }
+        .nav-cta:hover{background:var(--ink);color:var(--red);}
+        .nav-cta:hover::before{opacity:0.6;}
+        .menu-toggle{display:none;background:none;border:1.5px solid var(--line-strong);color:var(--bone);width:42px;height:42px;cursor:pointer;align-items:center;justify-content:center;font-size:1.1rem;}
 
-        section{padding:6rem 3rem;}
-        .container{max-width:1100px;margin:0 auto;}
-        .sec-tag{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--primary);font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem;}
-        .sec-tag::before{content:'';width:30px;height:2px;background:var(--primary);}
-        .sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:0.02em;margin-bottom:0.5rem;}
-        .sec-desc{color:var(--text-secondary);font-size:0.95rem;max-width:500px;line-height:1.7;}
+        /* ========= STAMPS / STICKERS ========= */
+        .stamp{
+            display:inline-flex;align-items:center;justify-content:center;
+            border:2px solid var(--red);color:var(--red);
+            padding:0.4rem 0.7rem;font-family:'IBM Plex Mono',monospace;
+            font-size:0.62rem;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;
+            position:relative;background:transparent;
+        }
+        .stamp::before{
+            content:'';position:absolute;inset:-3px;border:1px solid var(--red);opacity:0.35;
+            pointer-events:none;
+        }
+        .stamp.solid{background:var(--red);color:var(--bone);}
+        .stamp.bone{border-color:var(--bone);color:var(--bone);}
+        .stamp.bone::before{border-color:var(--bone);}
+        .stamp.rot-l{transform:rotate(-3.5deg);}
+        .stamp.rot-r{transform:rotate(3deg);}
+        .tape-strip{
+            position:absolute;background:var(--tape);backdrop-filter:blur(2px);
+            border-top:1px solid rgba(236,229,212,0.3);border-bottom:1px solid rgba(236,229,212,0.15);
+            box-shadow:0 1px 0 rgba(0,0,0,0.2);
+        }
 
-        .about-wrap{position:relative;margin-top:3rem;}
-        .about-img{width:100%;aspect-ratio:16/7;overflow:hidden;background:var(--bg-raised);}
-        .about-img img{width:100%;height:100%;object-fit:cover;opacity:0.5;filter:grayscale(40%);}
-        .about-panel{position:absolute;bottom:-2rem;right:3rem;background:var(--bg);border:1px solid var(--border);padding:2.5rem;max-width:500px;}
-        .about-panel h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.03em;margin-bottom:0.75rem;}
-        .about-panel p{color:var(--text-secondary);font-size:0.9rem;line-height:1.7;margin-bottom:0.75rem;}
+        /* ========= HERO ========= */
+        .hero{
+            min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;
+            padding:7rem 2rem 0;overflow:hidden;
+            background:
+                radial-gradient(ellipse at 20% 0%,rgba(230,57,70,0.12) 0%,transparent 50%),
+                linear-gradient(180deg,var(--ink) 0%,var(--ink-2) 100%);
+        }
+        .barbed{position:absolute;left:0;right:0;height:24px;pointer-events:none;opacity:0.55;color:var(--bone-mute);}
+        .barbed.top{top:62px;}
+        .barbed.bot{display:none;}
+        .barbed svg{display:block;width:100%;height:100%;}
 
-        .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:3rem;background:var(--border);}
-        .svc-block{background:var(--bg);padding:2.5rem;position:relative;transition:all 0.3s;}
-        .svc-block:hover{background:var(--bg-raised);}
-        .svc-num{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:rgba(var(--primary-rgb),0.1);position:absolute;top:0.5rem;right:1rem;line-height:1;}
-        .svc-block h3{font-size:1.05rem;font-weight:600;margin-bottom:0.4rem;}
-        .svc-block p{color:var(--text-secondary);font-size:0.85rem;line-height:1.6;}
-        .svc-price{color:var(--primary);font-weight:700;font-size:0.9rem;margin-top:0.75rem;display:inline-block;}
+        .hero-meta{
+            position:relative;z-index:3;display:flex;justify-content:space-between;align-items:flex-start;
+            padding-top:0.8rem;font-family:'IBM Plex Mono',monospace;
+            font-size:0.68rem;text-transform:uppercase;letter-spacing:0.2em;color:var(--bone-mute);
+            margin-bottom:auto;
+        }
+        .hero-meta .ml{display:flex;gap:1.6rem;flex-wrap:wrap;}
+        .hero-meta .ml .open::before{content:'\25CF';color:#5cf08a;margin-right:0.3rem;}
+        .hero-meta .ml .num{color:var(--red);}
 
-        .gallery-full{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:3px;margin-top:3rem;}
-        .gal-item{aspect-ratio:1;overflow:hidden;background:var(--bg-raised);position:relative;}
-        .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s,filter 0.5s;filter:grayscale(30%);}
-        .gal-item:hover img{transform:scale(1.08);filter:grayscale(0%);}
+        .hero-content{position:relative;z-index:3;max-width:1300px;width:100%;}
 
-        .reviews-flex{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem;}
-        .rev-card{border:1px solid var(--border);padding:2rem;position:relative;transition:border-color 0.3s;}
-        .rev-card:hover{border-color:rgba(var(--primary-rgb),0.3);}
-        .rev-card .big-q{font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(var(--primary-rgb),0.15);position:absolute;top:-0.5rem;left:1rem;line-height:1;}
-        .rev-stars{color:#f59e0b;font-size:0.85rem;margin-bottom:1rem;}
-        .rev-text{color:var(--text-secondary);font-size:0.88rem;line-height:1.75;margin-bottom:1rem;position:relative;}
-        .rev-name{font-weight:600;font-size:0.85rem;}
-        .rev-from{color:var(--text-muted);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;}
+        .hero-flag{
+            display:inline-flex;align-items:center;gap:0.7rem;margin-bottom:1.4rem;
+            font-family:'IBM Plex Mono',monospace;font-size:0.7rem;
+            text-transform:uppercase;letter-spacing:0.25em;color:var(--bone);
+            background:var(--red);padding:0.4rem 0.9rem;
+            transform:rotate(-1.2deg);
+        }
+        .hero-flag .pulse{
+            width:7px;height:7px;background:var(--bone);border-radius:50%;
+            box-shadow:0 0 0 0 rgba(236,229,212,0.6);animation:pulse 1.6s infinite;
+        }
+        @keyframes pulse{
+            0%{box-shadow:0 0 0 0 rgba(236,229,212,0.7);}
+            70%{box-shadow:0 0 0 8px rgba(236,229,212,0);}
+            100%{box-shadow:0 0 0 0 rgba(236,229,212,0);}
+        }
 
-        .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:3rem;background:var(--border);border:1px solid var(--border);}
-        .contact-pane{background:var(--bg);padding:2.5rem;}
-        .contact-pane h3{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.03em;margin-bottom:1.5rem;}
-        .h-tbl{width:100%;border-collapse:collapse;}
-        .h-tbl tr{border-bottom:1px solid var(--border);}
-        .h-tbl tr:last-child{border-bottom:none;}
-        .h-tbl td{padding:0.6rem 0;font-size:0.88rem;}
-        .h-tbl td:first-child{font-weight:500;}
-        .h-tbl td:last-child{text-align:right;color:var(--text-secondary);}
-        .ct-info{display:flex;flex-direction:column;gap:1.25rem;}
-        .ct-row{display:flex;align-items:center;gap:1rem;}
-        .ct-ico{width:44px;height:44px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
-        .ct-lbl{font-size:0.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;}
-        .ct-v{font-weight:500;font-size:0.9rem;}
-        .ct-v a{color:var(--text);text-decoration:none;transition:color 0.2s;}
-        .ct-v a:hover{color:var(--primary);}
-        .map-box{margin-top:2rem;height:300px;overflow:hidden;border:1px solid var(--border);}
-        .map-box iframe{width:100%;height:100%;border:0;filter:invert(90%) hue-rotate(180deg) brightness(0.8) contrast(1.3) saturate(0.15);}
+        .hero h1{
+            font-family:'Anton',Impact,sans-serif;font-weight:400;
+            font-size:clamp(3.8rem,13vw,9rem);line-height:0.85;letter-spacing:0.005em;
+            margin-bottom:1.6rem;text-transform:uppercase;
+        }
+        .hero h1 .row{display:block;}
+        .hero h1 .gray{color:var(--bone);}
+        .hero h1 .tats{
+            color:var(--red);position:relative;display:inline-block;
+        }
+        .hero h1 .tats::after{
+            content:'';position:absolute;left:-1%;right:-1%;bottom:0.08em;height:0.1em;
+            background:var(--red);opacity:0.3;z-index:-1;
+        }
+        .hero h1 .apos{
+            font-family:'Crimson Pro',serif;font-style:italic;font-weight:500;
+            color:var(--red);text-transform:none;font-size:0.6em;
+            display:inline-block;transform:translateY(-0.05em);padding:0 0.05em;
+        }
+        .hero h1 .ink{color:var(--bone);font-style:normal;}
+        .hero h1 .stick{
+            position:absolute;font-family:'Caveat',cursive;font-size:0.18em;
+            color:var(--red);transform:rotate(-8deg);letter-spacing:0;line-height:1;
+            text-transform:none;font-weight:700;
+        }
 
-        .cta-full{text-align:center;padding:6rem 2rem;border-top:1px solid var(--border);position:relative;}
-        .cta-full h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);letter-spacing:0.02em;margin-bottom:0.75rem;}
-        .cta-full p{color:var(--text-secondary);margin-bottom:2rem;}
+        .hero-row{display:block;position:relative;}
+        .hero-stick-est{
+            position:absolute;right:0;top:-1.2rem;
+            transform:rotate(6deg);
+            display:flex;flex-direction:column;align-items:center;gap:0.1rem;
+            border:2px solid var(--bone);padding:0.4rem 0.7rem;background:transparent;
+            font-family:'IBM Plex Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.2em;color:var(--bone);
+        }
+        .hero-stick-est .big{font-family:'Anton',sans-serif;font-size:1.1rem;letter-spacing:0.04em;line-height:1;color:var(--red);}
 
-        footer{border-top:1px solid var(--border);padding:2rem 3rem;}
-        .foot-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-        .foot-logo{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--text-secondary);letter-spacing:0.05em;}
-        .foot-links{display:flex;gap:1.5rem;}
-        .foot-links a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;transition:color 0.2s;}
-        .foot-links a:hover{color:var(--text);}
-        .foot-credit{color:var(--text-muted);font-size:0.75rem;}
-        .foot-credit a{color:var(--text-secondary);text-decoration:none;}
+        .hero-bottom{
+            display:grid;grid-template-columns:1.2fr auto 1.3fr;gap:2.8rem;
+            align-items:end;padding:2.5rem 0 4rem;
+            border-top:2px solid var(--bone);margin-top:2.6rem;
+            position:relative;
+        }
+        .hero-bottom::before{
+            content:'';position:absolute;top:-2px;left:0;width:60px;height:2px;background:var(--red);
+        }
+        .hero-lede{
+            max-width:380px;font-family:'Crimson Pro',serif;font-style:italic;font-weight:400;
+            font-size:1.05rem;color:var(--bone-2);line-height:1.6;
+        }
+        .hero-lede strong{color:var(--red);font-weight:600;font-style:normal;font-family:'Anton',sans-serif;letter-spacing:0.04em;text-transform:uppercase;font-size:0.95em;}
+        .hero-icon{justify-self:center;color:var(--red);opacity:0.85;}
+        .hero-icon svg{width:54px;height:54px;}
+        .hero-btns{display:flex;gap:0.7rem;flex-wrap:wrap;justify-self:end;}
 
-        .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1);}
+        .btn{
+            display:inline-flex;align-items:center;gap:0.55rem;
+            font-family:'Anton',sans-serif;font-size:0.95rem;
+            text-transform:uppercase;letter-spacing:0.08em;text-decoration:none;cursor:pointer;
+            padding:0.85rem 1.4rem;border:2px solid;transition:all 0.25s cubic-bezier(0.7,0,0.3,1);
+            position:relative;
+        }
+        .btn-solid{background:var(--red);color:var(--bone);border-color:var(--red);}
+        .btn-solid:hover{background:var(--red-deep);border-color:var(--red-deep);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--bone);}
+        .btn-ghost{background:transparent;color:var(--bone);border-color:var(--bone);}
+        .btn-ghost:hover{background:var(--bone);color:var(--ink);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--red);}
+        .btn .arr{transition:transform 0.25s;}
+        .btn:hover .arr{transform:translateX(3px);}
+
+        /* ========= MARQUEE ========= */
+        .marquee{
+            border-top:2px solid var(--bone);border-bottom:2px solid var(--bone);
+            background:var(--bone);color:var(--ink);overflow:hidden;padding:0.85rem 0;position:relative;
+        }
+        .marquee-track{display:flex;gap:2.5rem;width:max-content;animation:scroll 38s linear infinite;}
+        .marquee-item{
+            font-family:'Anton',sans-serif;font-size:1.4rem;text-transform:uppercase;letter-spacing:0.04em;
+            color:var(--ink);white-space:nowrap;display:flex;align-items:center;gap:2.2rem;
+        }
+        .marquee-item .star{color:var(--red);font-size:1.3rem;}
+        .marquee-item.serif{font-family:'Crimson Pro',serif;font-style:italic;font-weight:500;color:var(--lead);text-transform:none;letter-spacing:-0.005em;font-size:1.1rem;}
+        @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+        /* ========= SECTION SHELL ========= */
+        section{padding:7rem 2rem;position:relative;}
+        .container{max-width:1240px;margin:0 auto;position:relative;}
+        .sec-head{display:flex;align-items:flex-start;gap:1.4rem;margin-bottom:3rem;flex-wrap:wrap;}
+        .sec-num{
+            font-family:'IBM Plex Mono',monospace;font-size:0.68rem;text-transform:uppercase;
+            letter-spacing:0.22em;color:var(--red);font-weight:600;
+            border:1.5px solid var(--red);padding:0.45rem 0.7rem;
+            display:inline-flex;align-items:center;gap:0.4rem;flex-shrink:0;
+        }
+        .sec-num::before{content:'\00A7';font-style:italic;font-family:'Crimson Pro',serif;color:var(--red);font-size:0.85rem;}
+        .sec-title{
+            font-family:'Anton',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);
+            line-height:0.9;letter-spacing:0.005em;text-transform:uppercase;flex:1;min-width:280px;
+        }
+        .sec-title em{font-family:'Crimson Pro',serif;font-style:italic;font-weight:500;color:var(--bone-2);text-transform:none;}
+        .sec-title .red{color:var(--red);}
+        .sec-desc{
+            font-family:'Crimson Pro',serif;font-style:italic;font-weight:400;
+            color:var(--bone-2);font-size:1.1rem;max-width:480px;line-height:1.65;
+            border-left:2px solid var(--red);padding-left:1rem;
+        }
+
+        /* ========= ABOUT ========= */
+        .about{border-top:1px solid var(--line);}
+        .about-grid{display:grid;grid-template-columns:5fr 7fr;gap:4rem;margin-top:2rem;align-items:start;}
+        .about-img{
+            position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--ink-3);
+            border:2px solid var(--bone);
+        }
+        .about-img img{width:100%;height:100%;object-fit:cover;filter:contrast(1.2) saturate(0.4) brightness(0.75);}
+        .about-img::after{
+            content:'';position:absolute;inset:0;
+            background:
+                linear-gradient(180deg,transparent 50%,rgba(10,10,10,0.65) 100%),
+                radial-gradient(circle at 50% 50%,transparent 60%,rgba(10,10,10,0.4) 100%);
+        }
+        .about-img .corner-stamp{
+            position:absolute;top:1rem;left:1rem;z-index:2;
+        }
+        .about-img .lower-stamp{
+            position:absolute;bottom:1rem;right:1rem;z-index:2;
+            font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;
+            color:var(--bone);background:rgba(10,10,10,0.65);padding:0.35rem 0.6rem;border:1px solid var(--bone);
+        }
+        .about-img .ribbon{
+            position:absolute;bottom:18%;left:-12px;right:-12px;z-index:2;
+            background:var(--red);color:var(--bone);
+            font-family:'Anton',sans-serif;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.1em;
+            text-align:center;padding:0.6rem 1rem;
+            transform:rotate(-2deg);
+            box-shadow:0 4px 0 rgba(0,0,0,0.4);
+        }
+        .about-img .ribbon::before,.about-img .ribbon::after{
+            content:'';position:absolute;top:0;width:14px;height:100%;background:var(--red-deep);
+        }
+        .about-img .ribbon::before{left:-14px;clip-path:polygon(100% 0,0 50%,100% 100%);}
+        .about-img .ribbon::after{right:-14px;clip-path:polygon(0 0,100% 50%,0 100%);}
+
+        .about-copy{padding-top:0.5rem;position:relative;}
+        .about-quote{
+            font-family:'Anton',sans-serif;
+            font-size:clamp(1.7rem,2.7vw,2.4rem);line-height:1.05;color:var(--bone);
+            margin-bottom:2rem;text-transform:uppercase;letter-spacing:0.005em;
+        }
+        .about-quote em{font-family:'Crimson Pro',serif;font-style:italic;font-weight:500;color:var(--red);text-transform:none;letter-spacing:-0.01em;}
+        .about-quote .hand{font-family:'Caveat',cursive;color:var(--red);font-size:0.85em;letter-spacing:0;text-transform:none;line-height:0.9;}
+        .about-text{
+            font-family:'Crimson Pro',serif;font-style:italic;font-weight:400;
+            color:var(--bone-2);font-size:1.05rem;line-height:1.8;margin-bottom:1.2rem;
+        }
+        .about-text strong{color:var(--bone);font-weight:600;font-style:normal;font-family:'Antonio',sans-serif;text-transform:uppercase;letter-spacing:0.04em;font-size:0.95em;}
+        .about-sign{
+            display:flex;align-items:center;gap:1rem;padding-top:1.4rem;
+            margin-top:1.4rem;border-top:1px dashed var(--line-strong);
+        }
+        .about-sign .sig{font-family:'Caveat',cursive;font-size:2rem;color:var(--red);line-height:1;}
+        .about-sign .role{font-family:'IBM Plex Mono',monospace;font-size:0.66rem;text-transform:uppercase;letter-spacing:0.2em;color:var(--bone-mute);}
+
+        .about-stamps{
+            position:absolute;top:-1.2rem;right:0;display:flex;gap:0.8rem;
+        }
+
+        /* ========= STATS STRIP ========= */
+        .strip{
+            display:grid;grid-template-columns:repeat(4,1fr);
+            border-top:2px solid var(--bone);border-bottom:2px solid var(--bone);
+            background:var(--ink-2);
+        }
+        .strip-cell{padding:2.2rem 1.6rem;border-right:1px dashed var(--line-strong);position:relative;}
+        .strip-cell:last-child{border-right:none;}
+        .strip-cell .idx{
+            position:absolute;top:0.7rem;right:0.85rem;
+            font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--bone-mute);letter-spacing:0.12em;
+        }
+        .strip-cell .k{
+            font-family:'Anton',sans-serif;font-size:2.4rem;color:var(--bone);
+            letter-spacing:0.005em;line-height:1;margin-bottom:0.4rem;text-transform:uppercase;
+        }
+        .strip-cell .k em{font-family:'Crimson Pro',serif;font-style:italic;font-weight:500;color:var(--red);text-transform:none;}
+        .strip-cell .l{
+            font-family:'IBM Plex Mono',monospace;font-size:0.66rem;
+            text-transform:uppercase;letter-spacing:0.2em;color:var(--bone-mute);
+        }
+
+        /* ========= SERVICES (MENU) ========= */
+        .services{border-top:1px solid var(--line);}
+        .svc-foot{
+            font-family:'IBM Plex Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.2em;
+            color:var(--bone-mute);text-align:right;margin-top:1.5rem;
+        }
+        .svc-foot .red{color:var(--red);}
+        .svc-list{border-top:2px solid var(--bone);margin-top:1rem;}
+        .svc-row{
+            display:grid;grid-template-columns:60px 1fr 1.3fr auto;gap:2rem;
+            padding:2.1rem 0.5rem;border-bottom:1px dashed var(--line-strong);
+            align-items:center;cursor:pointer;text-decoration:none;color:inherit;
+            transition:padding 0.4s cubic-bezier(0.7,0,0.3,1),background 0.4s;
+            position:relative;
+        }
+        .svc-row::before{
+            content:'';position:absolute;left:0;top:0;height:100%;width:0;
+            background:linear-gradient(90deg,rgba(230,57,70,0.1) 0%,transparent 80%);
+            transition:width 0.5s cubic-bezier(0.7,0,0.3,1);z-index:-1;
+        }
+        .svc-row:hover{padding-left:1.6rem;}
+        .svc-row:hover::before{width:100%;}
+        .svc-row:hover .svc-name{color:var(--bone);}
+        .svc-row:hover .svc-arr{transform:translateX(0);opacity:1;color:var(--red);}
+        .svc-num{
+            font-family:'IBM Plex Mono',monospace;font-size:0.78rem;
+            color:var(--red);letter-spacing:0.18em;font-weight:600;
+        }
+        .svc-name{
+            font-family:'Anton',sans-serif;font-size:clamp(1.4rem,2.5vw,2.1rem);
+            text-transform:uppercase;letter-spacing:0.005em;color:var(--bone-2);transition:color 0.3s;
+            line-height:0.95;
+        }
+        .svc-desc{
+            font-family:'Crimson Pro',serif;font-style:italic;font-weight:400;
+            color:var(--bone-mute);font-size:0.98rem;line-height:1.55;
+        }
+        .svc-price{display:flex;flex-direction:column;align-items:flex-end;gap:0.2rem;text-align:right;flex-shrink:0;}
+        .svc-price .from{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.2em;color:var(--bone-mute);}
+        .svc-price .amt{font-family:'Anton',sans-serif;font-size:1.7rem;color:var(--red);line-height:1;letter-spacing:0.005em;text-transform:uppercase;}
+        .svc-price .amt.consult{font-family:'Crimson Pro',serif;font-style:italic;font-weight:500;font-size:1.1rem;color:var(--bone-2);text-transform:none;}
+        .svc-price .amt.free{color:var(--red);font-family:'Anton',sans-serif;font-size:1.4rem;text-transform:uppercase;}
+        .svc-arr{font-family:'IBM Plex Mono',monospace;color:var(--bone-mute);transform:translateX(-8px);opacity:0;transition:all 0.4s;position:absolute;right:0;}
+
+        /* ========= GALLERY ========= */
+        .gallery{border-top:1px solid var(--line);background:var(--ink-2);}
+        .gal-grid{
+            display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:90px;gap:0.9rem;margin-top:2rem;
+        }
+        .gal-cell{
+            position:relative;overflow:hidden;background:var(--ink-3);border:1.5px solid var(--bone);
+            transition:transform 0.5s cubic-bezier(0.7,0,0.3,1),box-shadow 0.5s,border-color 0.4s;
+        }
+        .gal-cell:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--red);border-color:var(--red);}
+        .gal-cell img{
+            width:100%;height:100%;object-fit:cover;
+            filter:grayscale(70%) contrast(1.2) brightness(0.92);
+            transition:filter 0.6s,transform 0.7s;
+        }
+        .gal-cell:hover img{filter:grayscale(0%) contrast(1.15);transform:scale(1.04);}
+        .gal-cell .tape{
+            position:absolute;top:-10px;left:18%;width:75px;height:22px;
+            background:var(--tape);transform:rotate(-4deg);
+            border-top:1px solid rgba(236,229,212,0.35);
+            box-shadow:0 1px 0 rgba(0,0,0,0.2);
+        }
+        .gal-cell .tape.r{left:auto;right:18%;transform:rotate(5deg);}
+        .gal-cell .label{
+            position:absolute;bottom:0.6rem;left:0.7rem;
+            font-family:'IBM Plex Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.18em;
+            color:var(--bone);background:var(--ink);padding:0.25rem 0.5rem;border:1px solid var(--bone);
+        }
+        .gal-cell .corner-stamp{
+            position:absolute;top:0.7rem;right:0.7rem;
+        }
+        .g1{grid-column:span 7;grid-row:span 4;}
+        .g2{grid-column:span 5;grid-row:span 2;}
+        .g3{grid-column:span 5;grid-row:span 2;}
+        .g4{grid-column:span 4;grid-row:span 3;}
+        .g5{grid-column:span 4;grid-row:span 3;}
+        .g6{grid-column:span 4;grid-row:span 3;}
+
+        /* ========= BOOKING / BOOKSY ========= */
+        .booking{border-top:1px solid var(--line);background:linear-gradient(180deg,var(--ink) 0%,var(--ink-2) 100%);}
+        .book-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem;align-items:start;}
+        .book-copy h3{
+            font-family:'Anton',sans-serif;font-size:1.9rem;text-transform:uppercase;
+            letter-spacing:0.005em;margin-bottom:1rem;line-height:0.95;
+        }
+        .book-copy h3 em{font-family:'Crimson Pro',serif;font-style:italic;font-weight:500;color:var(--red);text-transform:none;}
+        .book-copy p{font-family:'Crimson Pro',serif;font-style:italic;color:var(--bone-2);font-size:1rem;line-height:1.75;margin-bottom:1.2rem;}
+        .book-steps{list-style:none;margin-top:1.6rem;display:flex;flex-direction:column;gap:0;}
+        .book-steps li{
+            display:flex;gap:1rem;align-items:flex-start;padding:1rem 0;
+            border-top:1px dashed var(--line-strong);
+        }
+        .book-steps li:last-child{border-bottom:1px dashed var(--line-strong);}
+        .book-steps .n{
+            font-family:'Anton',sans-serif;color:var(--red);font-size:1.5rem;
+            flex-shrink:0;width:34px;line-height:1;
+        }
+        .book-steps .t{font-family:'Antonio',sans-serif;font-size:1rem;color:var(--bone);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
+        .book-steps .t em{
+            display:block;font-family:'Crimson Pro',serif;font-style:italic;
+            color:var(--bone-mute);font-size:0.9rem;margin-top:0.2rem;font-weight:400;text-transform:none;letter-spacing:0;
+        }
+
+        /* Booksy embed slot */
+        .booksy-slot{
+            position:relative;background:var(--ink-3);border:2px solid var(--bone);
+            padding:0;min-height:520px;overflow:hidden;
+        }
+        .booksy-slot::before{
+            content:'';position:absolute;inset:0;pointer-events:none;
+            background:
+                repeating-linear-gradient(45deg,transparent 0px,transparent 22px,rgba(230,57,70,0.04) 22px,rgba(230,57,70,0.04) 23px),
+                radial-gradient(circle at 50% 50%,transparent 60%,rgba(10,10,10,0.5) 100%);
+        }
+        .booksy-slot .corner-tape{position:absolute;width:88px;height:24px;}
+        .booksy-slot .corner-tape.tl{top:-12px;left:14px;background:var(--red);transform:rotate(-3deg);}
+        .booksy-slot .corner-tape.br{bottom:-12px;right:14px;background:var(--bone);transform:rotate(-2deg);}
+        .booksy-placeholder{
+            position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+            text-align:center;padding:3rem 2rem;gap:1.2rem;
+        }
+        .booksy-placeholder .badge{
+            font-family:'IBM Plex Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.22em;
+            color:var(--red);border:2px solid var(--red);padding:0.45rem 0.8rem;font-weight:600;
+        }
+        .booksy-placeholder h4{
+            font-family:'Anton',sans-serif;font-size:2.6rem;line-height:0.95;text-transform:uppercase;letter-spacing:0.005em;
+        }
+        .booksy-placeholder h4 em{font-family:'Crimson Pro',serif;font-style:italic;font-weight:500;color:var(--red);text-transform:none;}
+        .booksy-placeholder p{
+            max-width:340px;font-family:'Crimson Pro',serif;font-style:italic;
+            color:var(--bone-2);font-size:0.98rem;line-height:1.55;
+        }
+        .booksy-placeholder .ph-foot{
+            font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;
+            color:var(--bone-mute);margin-top:0.4rem;
+        }
+
+        /* ========= REVIEWS ========= */
+        .reviews{border-top:1px solid var(--line);}
+        .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2rem;}
+        .rev-card{
+            position:relative;border:2px solid var(--bone);padding:2.4rem 1.7rem 1.7rem;
+            background:var(--ink-2);transition:transform 0.4s,box-shadow 0.4s;
+        }
+        .rev-card:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--red);}
+        .rev-card:nth-child(2){transform:rotate(-0.7deg);}
+        .rev-card:nth-child(2):hover{transform:rotate(-0.7deg) translate(-3px,-3px);}
+        .rev-card:nth-child(3){transform:rotate(0.5deg);}
+        .rev-card:nth-child(3):hover{transform:rotate(0.5deg) translate(-3px,-3px);}
+        .rev-card .top-tape{
+            position:absolute;top:-10px;left:50%;transform:translateX(-50%) rotate(-2deg);
+            width:80px;height:18px;background:var(--red);
+        }
+        .rev-stars{color:var(--red);font-size:0.9rem;letter-spacing:0.15em;margin-bottom:1rem;font-family:'IBM Plex Mono',monospace;}
+        .rev-text{
+            font-family:'Crimson Pro',serif;font-style:italic;font-weight:400;
+            font-size:1.02rem;line-height:1.7;color:var(--bone);margin-bottom:1.4rem;
+        }
+        .rev-foot{
+            display:flex;justify-content:space-between;align-items:flex-end;
+            padding-top:1rem;border-top:1px dashed var(--line-strong);
+        }
+        .rev-name{font-family:'Anton',sans-serif;font-size:1.05rem;color:var(--bone);text-transform:uppercase;letter-spacing:0.04em;}
+        .rev-from{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.2em;color:var(--bone-mute);}
+
+        /* ========= CONTACT ========= */
+        .contact{border-top:1px solid var(--line);background:var(--ink-2);}
+        .contact-grid{
+            display:grid;grid-template-columns:1fr 1fr;gap:0;
+            margin-top:2rem;border:2px solid var(--bone);
+        }
+        .contact-cell{background:var(--ink);padding:2.5rem 2rem;}
+        .contact-cell:first-child{border-right:2px solid var(--bone);}
+        .contact-cell h3{
+            font-family:'Anton',sans-serif;font-size:1.4rem;text-transform:uppercase;letter-spacing:0.005em;
+            margin-bottom:1.6rem;display:flex;align-items:center;gap:0.7rem;
+        }
+        .contact-cell h3::before{content:'';width:24px;height:2px;background:var(--red);}
+        .hours{display:flex;flex-direction:column;}
+        .hours-row{
+            display:flex;justify-content:space-between;align-items:baseline;
+            padding:0.85rem 0;border-bottom:1px dashed var(--line);
+        }
+        .hours-row:last-child{border-bottom:none;}
+        .hours-row.today{color:var(--red);}
+        .hours-row.today .day::before{content:'\25B6 ';color:var(--red);font-size:0.7em;}
+        .hours-row .day{font-family:'Antonio',sans-serif;font-weight:600;font-size:0.98rem;text-transform:uppercase;letter-spacing:0.04em;}
+        .hours-row .time{font-family:'IBM Plex Mono',monospace;font-size:0.82rem;color:var(--bone-2);letter-spacing:0.04em;}
+        .hours-row.today .time{color:var(--red);}
+        .hours-row.closed .time{color:var(--bone-mute);font-style:italic;font-family:'Crimson Pro',serif;}
+
+        .ct-info{display:flex;flex-direction:column;gap:0;}
+        .ct-row{display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 0;border-bottom:1px dashed var(--line);}
+        .ct-row:last-child{border-bottom:none;}
+        .ct-ico{
+            width:38px;height:38px;border:1.5px solid var(--bone);
+            display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--red);background:var(--ink-2);
+        }
+        .ct-ico svg{width:16px;height:16px;}
+        .ct-lbl{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.22em;color:var(--bone-mute);margin-bottom:0.3rem;}
+        .ct-v{font-family:'Antonio',sans-serif;font-size:1rem;color:var(--bone);font-weight:500;line-height:1.4;}
+        .ct-v a{color:inherit;text-decoration:none;border-bottom:1.5px solid transparent;transition:border-color 0.25s,color 0.25s;}
+        .ct-v a:hover{border-bottom-color:var(--red);color:var(--red);}
+
+        .map-box{margin-top:2.5rem;height:340px;overflow:hidden;border:2px solid var(--bone);position:relative;}
+        .map-box iframe{width:100%;height:100%;border:0;filter:invert(92%) hue-rotate(180deg) brightness(0.7) contrast(1.5) saturate(0.1);}
+        .map-pin{
+            position:absolute;top:1rem;left:1rem;z-index:3;
+            background:var(--red);color:var(--bone);padding:0.45rem 0.8rem;
+            font-family:'IBM Plex Mono',monospace;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.2em;
+            transform:rotate(-1.5deg);
+        }
+        .map-pin::before{content:'\25CF';margin-right:0.4rem;}
+
+        /* ========= BIG CTA ========= */
+        .cta-final{padding:7rem 2rem;text-align:center;border-top:1px solid var(--line);position:relative;overflow:hidden;}
+        .cta-final::before{
+            content:'';position:absolute;inset:0;
+            background:radial-gradient(circle at 50% 50%,var(--red-glow) 0%,transparent 60%);
+            opacity:0.18;pointer-events:none;
+        }
+        .cta-final h2{
+            font-family:'Anton',sans-serif;font-size:clamp(2.6rem,7vw,5.2rem);
+            line-height:0.9;letter-spacing:0.005em;text-transform:uppercase;margin-bottom:1.2rem;position:relative;
+        }
+        .cta-final h2 em{font-family:'Crimson Pro',serif;font-style:italic;font-weight:500;color:var(--red);text-transform:none;}
+        .cta-final h2 .hand{
+            font-family:'Caveat',cursive;text-transform:none;color:var(--red);
+            font-size:0.95em;letter-spacing:0;display:inline-block;transform:translateY(0.05em) rotate(-3deg);font-weight:700;
+        }
+        .cta-final p{
+            font-family:'Crimson Pro',serif;font-style:italic;color:var(--bone-2);
+            max-width:520px;margin:0 auto 2.2rem;font-size:1.1rem;line-height:1.65;position:relative;
+        }
+        .cta-final .btn-row{display:flex;gap:0.7rem;justify-content:center;flex-wrap:wrap;position:relative;}
+
+        /* ========= FOOTER ========= */
+        footer{border-top:2px solid var(--bone);padding:3rem 2rem 2rem;background:var(--ink);}
+        .foot-top{
+            display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;
+            padding-bottom:2.2rem;border-bottom:1px dashed var(--line-strong);
+        }
+        .foot-brand{display:flex;flex-direction:column;gap:0.9rem;}
+        .foot-brand .lg{display:flex;align-items:center;gap:0.65rem;}
+        .foot-brand .lg .badge{
+            width:32px;height:32px;border:1.5px solid var(--bone);background:var(--red);
+            display:flex;align-items:center;justify-content:center;transform:rotate(-3deg);
+        }
+        .foot-brand .lg .badge svg{width:18px;height:18px;color:var(--bone);}
+        .foot-brand .lg .word{font-family:'Anton',sans-serif;font-size:1.2rem;letter-spacing:0.04em;text-transform:uppercase;line-height:1;}
+        .foot-brand .lg .word .apos{font-family:'Crimson Pro',serif;font-style:italic;color:var(--red);font-weight:600;font-size:0.85em;padding:0 0.05em;}
+        .foot-brand p{font-family:'Crimson Pro',serif;font-style:italic;color:var(--bone-mute);font-size:0.9rem;line-height:1.65;max-width:280px;}
+        .foot-col h4{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:var(--red);margin-bottom:1rem;font-weight:600;}
+        .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+        .foot-col a{
+            color:var(--bone-2);text-decoration:none;font-family:'Antonio',sans-serif;
+            font-size:0.92rem;font-weight:500;text-transform:uppercase;letter-spacing:0.04em;
+            transition:color 0.25s;
+        }
+        .foot-col a:hover{color:var(--red);}
+        .foot-bot{
+            display:flex;justify-content:space-between;align-items:center;
+            padding-top:1.4rem;flex-wrap:wrap;gap:1rem;
+        }
+        .foot-bot .credit{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--bone-mute);}
+        .foot-bot .credit a{color:var(--bone-2);text-decoration:none;border-bottom:1px solid transparent;transition:all 0.25s;}
+        .foot-bot .credit a:hover{color:var(--red);border-bottom-color:var(--red);}
+        .foot-bot .stamp-mark{font-family:'Caveat',cursive;color:var(--red);font-size:1.4rem;font-weight:700;transform:rotate(-2deg);display:inline-block;}
+
+        /* ========= REVEAL ========= */
+        .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.85s cubic-bezier(0.16,1,0.3,1),transform 0.85s cubic-bezier(0.16,1,0.3,1);}
         .reveal.visible{opacity:1;transform:translateY(0);}
-        .reveal-d1{transition-delay:0.1s;}.reveal-d2{transition-delay:0.2s;}.reveal-d3{transition-delay:0.3s;}
+        .d1{transition-delay:0.08s;}.d2{transition-delay:0.16s;}.d3{transition-delay:0.24s;}.d4{transition-delay:0.32s;}.d5{transition-delay:0.4s;}
 
-        @media(max-width:768px){
-            .nav-links{display:none;}.menu-toggle{display:flex;}
-            .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:1rem;right:1rem;background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);padding:1rem;gap:0.75rem;border:1px solid var(--border);}
-            nav{padding:0 1.5rem;}
-            .hero{padding:0 1.5rem 4rem;}
-            .hero h1{font-size:clamp(3rem,12vw,5rem);}
-            .stats-row{flex-wrap:wrap;gap:1.5rem;padding:2rem 1.5rem;}
-            .services-grid,.contact-wrap{grid-template-columns:1fr;}
-            .about-panel{position:relative;bottom:auto;right:auto;margin-top:1rem;}
-            .gallery-full{grid-template-columns:repeat(2,1fr);}
-            section{padding:4rem 1.5rem;}
-            .hero-btns{flex-direction:column;}
+        /* ========= MEDIA ========= */
+        @media(max-width:980px){
+            .nav-links{display:none;}
+            .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:1rem;right:1rem;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);padding:1.2rem;gap:1rem;border:2px solid var(--bone);}
+            .menu-toggle{display:flex;}
+            nav{padding:0.85rem 1.2rem;}
+            nav.scrolled{padding:0.6rem 1.2rem;}
+            section{padding:4.5rem 1.2rem;}
+            .hero{padding:5.5rem 1.2rem 0;}
+            .barbed.top{top:55px;}
+            .hero-bottom{grid-template-columns:1fr;gap:1.6rem;padding-bottom:3rem;}
+            .hero-icon{justify-self:start;}
+            .hero-btns{justify-self:start;}
+            .hero-stick-est{display:none;}
+            .about-grid,.book-grid,.contact-grid,.foot-top{grid-template-columns:1fr;gap:2.2rem;}
+            .contact-grid{border:2px solid var(--bone);}
+            .contact-cell:first-child{border-right:none;border-bottom:2px solid var(--bone);}
+            .strip{grid-template-columns:repeat(2,1fr);}
+            .strip-cell{border-right:none;border-bottom:1px dashed var(--line-strong);}
+            .strip-cell:nth-child(odd){border-right:1px dashed var(--line-strong);}
+            .strip-cell:nth-last-child(-n+2){border-bottom:none;}
+            .svc-row{grid-template-columns:46px 1fr auto;padding:1.3rem 0.5rem;gap:1rem;}
+            .svc-desc{display:none;}
+            .svc-row:hover{padding-left:0.9rem;}
+            .gal-grid{grid-template-columns:repeat(6,1fr);grid-auto-rows:80px;}
+            .g1{grid-column:span 6;grid-row:span 3;}
+            .g2,.g3{grid-column:span 6;grid-row:span 2;}
+            .g4,.g5,.g6{grid-column:span 3;grid-row:span 3;}
+            .rev-grid{grid-template-columns:1fr;}
+            .rev-card:nth-child(2),.rev-card:nth-child(3){transform:rotate(0);}
+            .rev-card:nth-child(2):hover,.rev-card:nth-child(3):hover{transform:translate(-3px,-3px);}
+            .marquee-item{font-size:1.2rem;}
+            .hero-meta{flex-direction:column;gap:0.6rem;}
+            .about-stamps{position:relative;top:0;right:0;margin-bottom:1rem;}
+            .sec-head{flex-direction:column;}
         }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="#" class="nav-logo"><span>Gray's</span> Tattoos</a>
+
+    <!-- ===== NAV ===== -->
+    <nav id="nav">
+        <a href="#" class="nav-logo">
+            <span class="badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 14h7l2-3 4 5h5"/>
+                    <path d="M14 8l4-4 2 2-4 4"/>
+                    <circle cx="6" cy="18" r="2.2"/>
+                </svg>
+            </span>
+            <span class="word">Gray<span class="apos">&rsquo;s</span> Tattoos</span>
+        </a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#booking">Book</a></li>
             <li><a href="#reviews">Reviews</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="tel:01604949958" class="nav-cta">Book Consultation</a>
+        <a href="tel:01604949958" class="nav-cta">Call <span class="arr">&rarr;</span></a>
         <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">&#9776;</button>
     </nav>
 
-    <section class="hero">
-        <div class="hero-bg"><img src="https://images.unsplash.com/photo-1598371839696-5c5bb1c12e38?w=1600" alt="Gray's Tattoos studio"></div>
-        <div class="hero-content">
-            <div class="hero-tag reveal">Owner-Operated Studio</div>
-            <h1 class="reveal reveal-d1">Custom Artwork<br>at <span>Gray's Tattoos</span></h1>
-            <p class="reveal reveal-d2">Owner-operated tattoo studio on St James' Road, Northampton. Personal service, custom artwork, one client at a time.</p>
-            <div class="hero-btns reveal reveal-d3">
-                <a href="tel:01604949958" class="btn-solid">Book a Consultation &rarr;</a>
-                <a href="#services" class="btn-outline">View Services</a>
-            </div>
-        </div>
-    </section>
-
-    <div class="stats-row">
-        <div class="stat-unit"><span class="stat-big">Owner</span><span class="stat-txt">Operated</span></div>
-        <div class="stat-unit"><span class="stat-big">Tue&ndash;Sat</span><span class="stat-txt">Open Days</span></div>
-        <div class="stat-unit"><span class="stat-big">1-to-1</span><span class="stat-txt">Personal Service</span></div>
+    <!-- barbed wire decoration -->
+    <div class="barbed top" aria-hidden="true">
+        <svg viewBox="0 0 1200 24" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.2">
+            <line x1="0" y1="12" x2="1200" y2="12"/>
+            <g stroke-linecap="round">
+                <path d="M40 4 L40 20 M32 8 L48 16 M32 16 L48 8"/>
+                <path d="M160 4 L160 20 M152 8 L168 16 M152 16 L168 8"/>
+                <path d="M280 4 L280 20 M272 8 L288 16 M272 16 L288 8"/>
+                <path d="M400 4 L400 20 M392 8 L408 16 M392 16 L408 8"/>
+                <path d="M520 4 L520 20 M512 8 L528 16 M512 16 L528 8"/>
+                <path d="M640 4 L640 20 M632 8 L648 16 M632 16 L648 8"/>
+                <path d="M760 4 L760 20 M752 8 L768 16 M752 16 L768 8"/>
+                <path d="M880 4 L880 20 M872 8 L888 16 M872 16 L888 8"/>
+                <path d="M1000 4 L1000 20 M992 8 L1008 16 M992 16 L1008 8"/>
+                <path d="M1120 4 L1120 20 M1112 8 L1128 16 M1112 16 L1128 8"/>
+            </g>
+        </svg>
     </div>
 
-    <section id="about">
-        <div class="container">
-            <div class="sec-tag reveal">About Us</div>
-            <h2 class="sec-title reveal reveal-d1">Personal Tattoo Studio</h2>
-            <div class="about-wrap reveal reveal-d2">
-                <div class="about-img"><img src="https://images.unsplash.com/photo-1598371839696-5c5bb1c12e38?w=1200" alt="Gray's Tattoos studio" loading="lazy"></div>
-                <div class="about-panel">
-                    <h3>One Client at a Time</h3>
-                    <p>Gray's Tattoos is an owner-operated studio on St James' Road, Northampton. Every client gets personal, 1-to-1 attention from consultation through to the finished piece.</p>
-                    <p>Whether you want a custom design, a cover up, or something from the flash book, Graham takes the time to get it right.</p>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-meta">
+            <div class="ml">
+                <span class="open">Open Tue&ndash;Sat</span>
+                <span>108 St James&rsquo; Road &middot; Northampton</span>
+            </div>
+            <div class="ml">
+                <span>Owner <span class="num">Operated</span></span>
+                <span class="num">NN5 5LF</span>
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <span class="hero-flag reveal"><span class="pulse"></span>Owner-Operated &middot; St James&rsquo; Road</span>
+
+            <h1>
+                <span class="row reveal d1"><span class="gray">Gray<span class="apos">&rsquo;s</span></span></span>
+                <span class="row reveal d2 hero-row">
+                    <span class="tats">Tattoos.</span>
+                    <span class="hero-stick-est" aria-hidden="true">
+                        <span>Est.</span>
+                        <span class="big">N&rsquo;PTON</span>
+                        <span>NN5</span>
+                    </span>
+                </span>
+                <span class="row reveal d3"><span class="ink">one client.</span> <span class="apos">&amp;</span> <span class="ink">one chair.</span></span>
+            </h1>
+
+            <div class="hero-bottom">
+                <p class="hero-lede reveal d3">Owner-operated tattoo studio on St James&rsquo; Road in the heart of Northampton. Custom artwork, cover-ups, flash &amp; touch-ups &mdash; drawn up &amp; etched by Graham, one client at a time. <strong>Walk-ins by arrangement</strong> &mdash; call ahead.</p>
+
+                <div class="hero-icon reveal d4" aria-hidden="true">
+                    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 38 L14 26 L20 26 L22 22 L36 22 L38 26 L50 26 L50 38 L46 38 L46 32 L18 32 L18 38 Z"/>
+                        <path d="M22 38 L22 46 M28 38 L28 46 M34 38 L34 46 M40 38 L40 46"/>
+                        <circle cx="44" cy="22" r="2"/>
+                    </svg>
+                </div>
+
+                <div class="hero-btns reveal d5">
+                    <a href="#booking" class="btn btn-solid">Book a chair <span class="arr">&rarr;</span></a>
+                    <a href="#services" class="btn btn-ghost">The menu</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services">
-        <div class="container">
-            <div class="sec-tag reveal">What We Offer</div>
-            <h2 class="sec-title reveal reveal-d1">Services &amp; Pricing</h2>
-            <p class="sec-desc reveal reveal-d2">Bespoke tattoo work with personal attention to every detail.</p>
-            <div class="services-grid reveal reveal-d3">
-                <div class="svc-block"><div class="svc-num">01</div><h3>Custom Tattoo</h3><p>Bespoke designs created just for you, drawn to your vision.</p><span class="svc-price">from &pound;60/hr</span></div>
-                <div class="svc-block"><div class="svc-num">02</div><h3>Small Tattoo</h3><p>Quick pieces, flash-sized work, and minimal designs.</p><span class="svc-price">from &pound;40</span></div>
-                <div class="svc-block"><div class="svc-num">03</div><h3>Cover Up</h3><p>Transform old ink into something you love. Free consultation first.</p><span class="svc-price">Consultation</span></div>
-                <div class="svc-block"><div class="svc-num">04</div><h3>Flash Design</h3><p>Choose from ready-made designs in the studio flash book.</p><span class="svc-price">from &pound;50</span></div>
-                <div class="svc-block"><div class="svc-num">05</div><h3>Touch Up</h3><p>Refresh and revive existing tattoos that need a little love.</p><span class="svc-price">from &pound;30</span></div>
-                <div class="svc-block"><div class="svc-num">06</div><h3>Consultation</h3><p>Come in for a chat about your idea. No pressure, no obligation.</p><span class="svc-price">Free</span></div>
-            </div>
+    <!-- ===== MARQUEE ===== -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <span class="marquee-item">Walk-Ins By Arrangement <span class="star">&#x2736;</span></span>
+            <span class="marquee-item serif">&mdash; custom designs &mdash;</span>
+            <span class="marquee-item">Cover Ups <span class="star">&#x2736;</span></span>
+            <span class="marquee-item serif">&mdash; flash book ready &mdash;</span>
+            <span class="marquee-item">Free Consultations <span class="star">&#x2736;</span></span>
+            <span class="marquee-item serif">&mdash; one client at a time &mdash;</span>
+            <span class="marquee-item">St James&rsquo; Road <span class="star">&#x2736;</span></span>
+            <span class="marquee-item serif">&mdash; Northampton &middot; NN5 &mdash;</span>
+            <span class="marquee-item">Walk-Ins By Arrangement <span class="star">&#x2736;</span></span>
+            <span class="marquee-item serif">&mdash; custom designs &mdash;</span>
+            <span class="marquee-item">Cover Ups <span class="star">&#x2736;</span></span>
+            <span class="marquee-item serif">&mdash; flash book ready &mdash;</span>
+            <span class="marquee-item">Free Consultations <span class="star">&#x2736;</span></span>
+            <span class="marquee-item serif">&mdash; one client at a time &mdash;</span>
+            <span class="marquee-item">St James&rsquo; Road <span class="star">&#x2736;</span></span>
+            <span class="marquee-item serif">&mdash; Northampton &middot; NN5 &mdash;</span>
         </div>
-    </section>
+    </div>
 
-    <section id="gallery">
+    <!-- ===== ABOUT ===== -->
+    <section class="about" id="about">
         <div class="container">
-            <div class="sec-tag reveal">Our Work</div>
-            <h2 class="sec-title reveal reveal-d1">Gallery</h2>
-            <div class="gallery-full reveal reveal-d2">
-                <div class="gal-item"><img src="https://images.unsplash.com/photo-1598371839696-5c5bb1c12e38?w=800" alt="Tattoo work" loading="lazy"></div>
-                <div class="gal-item"><img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=800" alt="Tattoo art" loading="lazy"></div>
-                <div class="gal-item"><img src="https://images.unsplash.com/photo-1590246814883-57764a8db0d6?w=800" alt="Tattoo studio" loading="lazy"></div>
-                <div class="gal-item"><img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?w=800" alt="Custom tattoo" loading="lazy"></div>
+            <div class="sec-head">
+                <span class="sec-num reveal">01 / Studio</span>
+                <h2 class="sec-title reveal d1">Personal ink, <em>one chair.</em><br>Built on <span class="red">St James&rsquo; Road.</span></h2>
             </div>
-        </div>
-    </section>
 
-    <section id="reviews">
-        <div class="container">
-            <div class="sec-tag reveal">Testimonials</div>
-            <h2 class="sec-title reveal reveal-d1">What Our Customers Say</h2>
-            <div class="reviews-flex reveal reveal-d2">
-                <div class="rev-card">
-                    <div class="big-q">&ldquo;</div>
-                    <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="rev-text">Graham is a true artist. The detail in my piece is incredible &mdash; exactly what I wanted and more.</p>
-                    <div class="rev-name">Jamie R.</div>
-                    <div class="rev-from">Google Review</div>
+            <div class="about-grid">
+                <div class="about-img reveal d2">
+                    <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=1200&q=85" alt="Inside Gray's Tattoos studio" loading="lazy">
+                    <span class="corner-stamp stamp solid rot-l">Owner &middot; Operated</span>
+                    <div class="ribbon">&mdash; Hand Drawn &middot; Hand Done &mdash;</div>
+                    <span class="lower-stamp">108 St James&rsquo; Rd &middot; NN5 5LF</span>
                 </div>
-                <div class="rev-card">
-                    <div class="big-q">&ldquo;</div>
-                    <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="rev-text">So much attention to detail. He took the time to get the design perfect before starting. Couldn't be happier.</p>
-                    <div class="rev-name">Sarah T.</div>
-                    <div class="rev-from">Google Review</div>
-                </div>
-                <div class="rev-card">
-                    <div class="big-q">&ldquo;</div>
-                    <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="rev-text">Made me feel so comfortable for my first tattoo. Talked me through everything and the result is stunning.</p>
-                    <div class="rev-name">Chris M.</div>
-                    <div class="rev-from">Google Review</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="contact">
-        <div class="container">
-            <div class="sec-tag reveal">Get In Touch</div>
-            <h2 class="sec-title reveal reveal-d1">Contact &amp; Hours</h2>
-            <div class="contact-wrap reveal reveal-d2">
-                <div class="contact-pane">
-                    <h3>Opening Hours</h3>
-                    <table class="h-tbl">
-                        <tr><td>Monday</td><td>Closed</td></tr>
-                        <tr><td>Tuesday - Saturday</td><td>10:00 - 17:00</td></tr>
-                        <tr><td>Sunday</td><td>Closed</td></tr>
-                    </table>
-                </div>
-                <div class="contact-pane">
-                    <h3>Find Us</h3>
-                    <div class="ct-info">
-                        <div class="ct-row"><div class="ct-ico">&#9906;</div><div><div class="ct-lbl">Address</div><div class="ct-v">108 St James' Road, Northampton NN5 5LF</div></div></div>
-                        <div class="ct-row"><div class="ct-ico">&#9742;</div><div><div class="ct-lbl">Phone</div><div class="ct-v"><a href="tel:01604949958">01604 949958</a></div></div></div>
-                        <div class="ct-row"><div class="ct-ico">&#9993;</div><div><div class="ct-lbl">Email</div><div class="ct-v"><a href="mailto:crosslandgraham@gmail.com">crosslandgraham@gmail.com</a></div></div></div>
+                <div class="about-copy">
+                    <div class="about-stamps">
+                        <span class="stamp bone rot-l reveal">1-to-1 &middot; Personal</span>
+                        <span class="stamp rot-r reveal d1">Single-Use</span>
+                    </div>
+
+                    <p class="about-quote reveal d3">
+                        <span class="hand">&ldquo;</span>I don&rsquo;t rush a piece. I <em>draw it up,</em><br>we talk it through &mdash; then the needle moves.
+                    </p>
+                    <p class="about-text reveal d4">Gray&rsquo;s is an owner-operated tattoo studio on <strong>St James&rsquo; Road</strong> in Northampton. Custom artwork, cover-ups, flash designs, touch-ups &mdash; whatever you walk in with, Graham takes the time to get it right before any ink touches skin.</p>
+                    <p class="about-text reveal d4">No shop floor, no shouting. <strong>One client at a time</strong>, free consultation up front, hygiene non-negotiable. Just you, the design, and a chair that&rsquo;s yours for the session.</p>
+                    <div class="about-sign reveal d5">
+                        <span class="sig">&mdash; Graham</span>
+                        <span class="role">Owner &amp; Resident Artist</span>
                     </div>
                 </div>
             </div>
-            <div class="map-box reveal reveal-d3">
-                <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Grays+Tattoos+108+St+James+Road+Northampton" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- ===== STATS STRIP ===== -->
+    <div class="strip">
+        <div class="strip-cell reveal"><span class="idx">/01</span><div class="k">1<em>-to-</em>1</div><div class="l">Personal Service</div></div>
+        <div class="strip-cell reveal d1"><span class="idx">/02</span><div class="k"><em>Owner</em> Run</div><div class="l">No Floor Crew</div></div>
+        <div class="strip-cell reveal d2"><span class="idx">/03</span><div class="k">5<em>/</em>7</div><div class="l">Tue To Sat</div></div>
+        <div class="strip-cell reveal d3"><span class="idx">/04</span><div class="k">Free<em>.</em></div><div class="l">Consultations</div></div>
+    </div>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-num reveal">02 / Menu</span>
+                <h2 class="sec-title reveal d1">The <em>flash</em><br>price <span class="red">list.</span></h2>
+                <p class="sec-desc reveal d2">Custom work, flash, cover-ups &amp; touch-ups. Prices below are starting points &mdash; final quote depends on size, detail &amp; chair time. Anything bigger, book a free consult first.</p>
+            </div>
+
+            <div class="svc-list">
+                <a href="#booking" class="svc-row reveal">
+                    <span class="svc-num">01</span>
+                    <span class="svc-name">Custom Tattoo</span>
+                    <span class="svc-desc">Bespoke designs drawn from scratch &mdash; bring a reference, a feeling, or just a vibe and Graham builds the rest with you.</span>
+                    <span class="svc-price"><span class="from">From</span><span class="amt">&pound;60/hr</span></span>
+                    <span class="svc-arr">&#x2197;</span>
+                </a>
+                <a href="#booking" class="svc-row reveal d1">
+                    <span class="svc-num">02</span>
+                    <span class="svc-name">Small Tattoo</span>
+                    <span class="svc-desc">Quick pieces, flash-sized work, neat little nods. First tattoos, hidden marks, clean lines.</span>
+                    <span class="svc-price"><span class="from">From</span><span class="amt">&pound;40</span></span>
+                    <span class="svc-arr">&#x2197;</span>
+                </a>
+                <a href="#booking" class="svc-row reveal d2">
+                    <span class="svc-num">03</span>
+                    <span class="svc-name">Cover Up</span>
+                    <span class="svc-desc">Old ink, regret tattoo, faded job? Graham&rsquo;ll turn the unwanted into something you&rsquo;ll actually want to wear. Free consult first.</span>
+                    <span class="svc-price"><span class="from">By</span><span class="amt consult">consult</span></span>
+                    <span class="svc-arr">&#x2197;</span>
+                </a>
+                <a href="#booking" class="svc-row reveal d3">
+                    <span class="svc-num">04</span>
+                    <span class="svc-name">Flash Design</span>
+                    <span class="svc-desc">Pick from ready-made designs in the studio flash book &mdash; tested, drawn, ready to ink the same day.</span>
+                    <span class="svc-price"><span class="from">From</span><span class="amt">&pound;50</span></span>
+                    <span class="svc-arr">&#x2197;</span>
+                </a>
+                <a href="#booking" class="svc-row reveal d4">
+                    <span class="svc-num">05</span>
+                    <span class="svc-name">Touch Up</span>
+                    <span class="svc-desc">Refresh and revive existing tattoos that need a little love. Faded lines, washed colour, finished properly.</span>
+                    <span class="svc-price"><span class="from">From</span><span class="amt">&pound;30</span></span>
+                    <span class="svc-arr">&#x2197;</span>
+                </a>
+                <a href="#booking" class="svc-row reveal d5">
+                    <span class="svc-num">06</span>
+                    <span class="svc-name">Consultation</span>
+                    <span class="svc-desc">Come in for a chat about your idea. No pressure, no obligation, no clock running &mdash; just a sit-down to plan it right.</span>
+                    <span class="svc-price"><span class="from">All</span><span class="amt free">Free</span></span>
+                    <span class="svc-arr">&#x2197;</span>
+                </a>
+            </div>
+
+            <p class="svc-foot reveal">All prices in <span class="red">GBP</span> &middot; Final quote on consult &middot; Deposit secures your booking</p>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-num reveal">03 / Work</span>
+                <h2 class="sec-title reveal d1">Fresh off <em>the chair.</em><br><span class="red">No filters.</span></h2>
+                <p class="sec-desc reveal d2">Snapshots of recent work &mdash; custom pieces, flash designs, cover-ups &amp; clean line work. <em>Swap with studio portfolio shots before launch.</em></p>
+            </div>
+
+            <div class="gal-grid">
+                <div class="gal-cell g1 reveal"><span class="tape"></span><img src="https://images.unsplash.com/photo-1598371839696-5c5bb1c12e38?w=1200&q=85" alt="Custom tattoo work" loading="lazy"><span class="corner-stamp stamp solid rot-r">2026</span><span class="label">Custom</span></div>
+                <div class="gal-cell g2 reveal d1"><span class="tape r"></span><img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=900&q=85" alt="Detail tattoo" loading="lazy"><span class="label">Fine Line</span></div>
+                <div class="gal-cell g3 reveal d2"><span class="tape"></span><img src="https://images.unsplash.com/photo-1590246814883-57764a8db0d6?w=900&q=85" alt="Studio shot" loading="lazy"><span class="label">Studio</span></div>
+                <div class="gal-cell g4 reveal d3"><span class="tape r"></span><img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?w=900&q=85" alt="Tattoo art" loading="lazy"><span class="label">Flash</span></div>
+                <div class="gal-cell g5 reveal d4"><span class="tape"></span><img src="https://images.unsplash.com/photo-1559563362-c667ba5f5480?w=700&q=85" alt="Cover up work" loading="lazy"><span class="label">Cover Up</span></div>
+                <div class="gal-cell g6 reveal d5"><span class="tape r"></span><img src="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=900&q=85" alt="Tattoo flash" loading="lazy"><span class="label">Touch Up</span></div>
             </div>
         </div>
     </section>
 
-    <section class="cta-full">
-        <h2 class="reveal">Ready for New Ink?</h2>
-        <p class="reveal reveal-d1">Book a free consultation at Gray's Tattoos and bring your idea to life.</p>
-        <a href="tel:01604949958" class="btn-solid reveal reveal-d2">Book a Consultation &rarr;</a>
+    <!-- ===== BOOKING (BOOKSY READY) ===== -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-num reveal">04 / Book</span>
+                <h2 class="sec-title reveal d1">Lock in <em>the chair.</em><br><span class="red">No phone tag.</span></h2>
+                <p class="sec-desc reveal d2">Pick your service, pick your slot, lock it in with a deposit &mdash; no missed calls, no awkward back-and-forth. Powered by Booksy once we go live.</p>
+            </div>
+
+            <div class="book-grid">
+                <div class="book-copy reveal d3">
+                    <h3>How it <em>works.</em></h3>
+                    <p>Booking online means we plan your piece properly &mdash; clear price up front, automatic reminder the day before, no double-bookings.</p>
+                    <ol class="book-steps">
+                        <li><span class="n">01</span><span class="t">Pick your service<em>tattoo, cover-up, flash, or free consult</em></span></li>
+                        <li><span class="n">02</span><span class="t">Choose date &amp; time<em>real-time availability, Tue&ndash;Sat</em></span></li>
+                        <li><span class="n">03</span><span class="t">Lock it in with deposit<em>comes off your final price</em></span></li>
+                        <li><span class="n">04</span><span class="t">Show up &amp; get inked<em>reminder lands the day before</em></span></li>
+                    </ol>
+                </div>
+
+                <div class="booksy-slot reveal d4" id="booksy-embed">
+                    <!--
+                        BOOKSY WIDGET DROP-IN ZONE
+                        Once Gray's Tattoos' Booksy account is set up, paste the widget script & div here.
+                        Booksy provides: <script async src="https://booksy.com/widget/code.js?...">
+                                         <div class="booksy-widget-button" data-id="..."></div>
+                        Remove the .booksy-placeholder div below when live.
+                    -->
+                    <span class="corner-tape tl" aria-hidden="true"></span>
+                    <span class="corner-tape br" aria-hidden="true"></span>
+                    <div class="booksy-placeholder">
+                        <span class="badge">Booksy &middot; Coming Soon</span>
+                        <h4>One tap.<br>One <em>chair.</em></h4>
+                        <p>Live booking lands here once the studio&rsquo;s Booksy account is live &mdash; instant slot select, deposits &amp; reminders.</p>
+                        <a href="tel:01604949958" class="btn btn-solid">Call to book <span class="arr">&rarr;</span></a>
+                        <span class="ph-foot">For now &middot; 01604 949958</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- ===== REVIEWS ===== -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-num reveal">05 / Talk</span>
+                <h2 class="sec-title reveal d1">Word from <em>the chair.</em><br><span class="red">Straight up.</span></h2>
+                <p class="sec-desc reveal d2">Real customers, real ink, real reviews &mdash; pulled from Google.</p>
+            </div>
+
+            <div class="rev-grid">
+                <div class="rev-card reveal d2">
+                    <span class="top-tape" aria-hidden="true"></span>
+                    <div class="rev-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                    <p class="rev-text">Graham is a true artist. The detail in my piece is incredible &mdash; exactly what I wanted, and more.</p>
+                    <div class="rev-foot"><span class="rev-name">Jamie R.</span><span class="rev-from">Google &middot; 5&#9733;</span></div>
+                </div>
+                <div class="rev-card reveal d3">
+                    <span class="top-tape" aria-hidden="true"></span>
+                    <div class="rev-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                    <p class="rev-text">So much attention to detail. He took the time to get the design perfect before starting. Couldn&rsquo;t be happier.</p>
+                    <div class="rev-foot"><span class="rev-name">Sarah T.</span><span class="rev-from">Google &middot; 5&#9733;</span></div>
+                </div>
+                <div class="rev-card reveal d4">
+                    <span class="top-tape" aria-hidden="true"></span>
+                    <div class="rev-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                    <p class="rev-text">Made me feel so comfortable for my first tattoo. Talked me through everything and the result is stunning.</p>
+                    <div class="rev-foot"><span class="rev-name">Chris M.</span><span class="rev-from">Google &middot; 5&#9733;</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-num reveal">06 / Find Us</span>
+                <h2 class="sec-title reveal d1">Drop in. <em>Or call.</em><br><span class="red">Either works.</span></h2>
+                <p class="sec-desc reveal d2">Sat on St James&rsquo; Road in Northampton. Open five days &mdash; closed Sundays &amp; Mondays. Walk-ins by arrangement.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-cell reveal d2">
+                    <h3>Opening Hours</h3>
+                    <div class="hours">
+                        <div class="hours-row closed" data-day="1"><span class="day">Monday</span><span class="time">Closed</span></div>
+                        <div class="hours-row" data-day="2"><span class="day">Tuesday</span><span class="time">10:00 &mdash; 17:00</span></div>
+                        <div class="hours-row" data-day="3"><span class="day">Wednesday</span><span class="time">10:00 &mdash; 17:00</span></div>
+                        <div class="hours-row" data-day="4"><span class="day">Thursday</span><span class="time">10:00 &mdash; 17:00</span></div>
+                        <div class="hours-row" data-day="5"><span class="day">Friday</span><span class="time">10:00 &mdash; 17:00</span></div>
+                        <div class="hours-row" data-day="6"><span class="day">Saturday</span><span class="time">10:00 &mdash; 17:00</span></div>
+                        <div class="hours-row closed" data-day="0"><span class="day">Sunday</span><span class="time">Closed</span></div>
+                    </div>
+                </div>
+
+                <div class="contact-cell reveal d3">
+                    <h3>Get In Touch</h3>
+                    <div class="ct-info">
+                        <div class="ct-row">
+                            <div class="ct-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+                            <div><div class="ct-lbl">Address</div><div class="ct-v">108 St James&rsquo; Road<br>Northampton &middot; NN5 5LF</div></div>
+                        </div>
+                        <div class="ct-row">
+                            <div class="ct-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5c0 9 7 16 16 16l2-3-4-2-2 2c-3-1-6-4-7-7l2-2-2-4-3 0z"/></svg></div>
+                            <div><div class="ct-lbl">Phone</div><div class="ct-v"><a href="tel:01604949958">01604 949958</a></div></div>
+                        </div>
+                        <div class="ct-row">
+                            <div class="ct-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18v12H3z"/><path d="M3 6l9 7 9-7"/></svg></div>
+                            <div><div class="ct-lbl">Email</div><div class="ct-v"><a href="mailto:crosslandgraham@gmail.com">crosslandgraham@gmail.com</a></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-box reveal d4">
+                <span class="map-pin">St James&rsquo; Rd &middot; NN5</span>
+                <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Grays+Tattoos+108+St+James+Road+Northampton+NN5+5LF" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-final">
+        <h2 class="reveal">Ready to <em>get</em><br><span class="hand">marked up</span>?</h2>
+        <p class="reveal d1">Book a free consult, drop in for a chat, or pick up the phone &mdash; let&rsquo;s make it permanent.</p>
+        <div class="btn-row reveal d2">
+            <a href="#booking" class="btn btn-solid">Book online <span class="arr">&rarr;</span></a>
+            <a href="tel:01604949958" class="btn btn-ghost">Call 01604 949958</a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
     <footer>
-        <div class="foot-inner">
-            <span class="foot-logo">Gray's Tattoos</span>
-            <div class="foot-links"><a href="#about">About</a><a href="#services">Services</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></div>
-            <span class="foot-credit">Built by <a href="https://twix.tf" target="_blank">Harry</a></span>
+        <div class="foot-top">
+            <div class="foot-brand">
+                <div class="lg">
+                    <span class="badge" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 14h7l2-3 4 5h5"/>
+                            <path d="M14 8l4-4 2 2-4 4"/>
+                            <circle cx="6" cy="18" r="2.2"/>
+                        </svg>
+                    </span>
+                    <span class="word">Gray<span class="apos">&rsquo;s</span> Tattoos</span>
+                </div>
+                <p>Northampton&rsquo;s owner-operated tattoo studio. 108 St James&rsquo; Road, NN5 5LF. One client at a time. Hand drawn, hand done.</p>
+            </div>
+            <div class="foot-col">
+                <h4>Studio</h4>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="foot-col">
+                <h4>Visit</h4>
+                <ul>
+                    <li><a href="#contact">Hours</a></li>
+                    <li><a href="https://maps.google.com/?q=108+St+James+Road+Northampton+NN5+5LF" target="_blank" rel="noopener">Directions</a></li>
+                    <li><a href="tel:01604949958">01604 949958</a></li>
+                    <li><a href="#booking">Book Online</a></li>
+                </ul>
+            </div>
+            <div class="foot-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:crosslandgraham@gmail.com">Email Us</a></li>
+                    <li><a href="#contact">Find Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="foot-bot">
+            <span class="credit">&copy; Gray&rsquo;s Tattoos &middot; Northampton &middot; NN5 5LF</span>
+            <span class="stamp-mark">&mdash; hand done on St James&rsquo; Road.</span>
+            <span class="credit">Site by <a href="https://twix.tf" target="_blank" rel="noopener">Harry / twix.tf</a></span>
         </div>
     </footer>
 
     <script>
-        window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50);});
-        const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
-        document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-        document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth'});document.getElementById('navLinks').classList.remove('open');}});});
+        // Nav scroll state
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        // Reveal on scroll
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+        // Smooth scroll + close menu
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                const t = document.querySelector(href);
+                if (t) {
+                    e.preventDefault();
+                    t.scrollIntoView({ behavior: 'smooth' });
+                    document.getElementById('navLinks').classList.remove('open');
+                }
+            });
+        });
+
+        // Highlight today's hours
+        const today = new Date().getDay();
+        const todayRow = document.querySelector(`.hours-row[data-day="${today}"]`);
+        if (todayRow) todayRow.classList.add('today');
     </script>
 </body>
 </html>
